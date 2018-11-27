@@ -15,6 +15,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.dispatch import receiver
 from django.urls import reverse
+from django.core.validators import ValidationError
 from django.db.models.signals import post_save
 from rest_framework.authtoken.models import Token
 from store.consts import validation_messages

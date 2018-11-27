@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http.response import HttpResponse
+from django.core.validators import ValidationError
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import Q
@@ -47,17 +48,6 @@ def get_auth_token(request):
 	return redirect(store_home)
 
 
-class HomeView(TemplateView):
-	def dispatch(self, request, *args, **kwargs):
-		if self.request.user.is_anonymous:
-			return HttpResponseRedirect(reverse('store-signin'))
-		if self.request.user.store:
-			return redirect(store_home)
-		if self.request.user.delivery_boy:
-			return redirect(delivery_boy_home)
-
-
-
 @login_required(login_url='/store/signin')
 def store_home(request):
 	return redirect(store_tasks)
@@ -86,7 +76,7 @@ def store_signup(request):
 		{"user_form": user_form, "store_form":store_form})
 
 
-@login_required(login_url='store/signin')
+@login_required(login_url='/store/signin/')
 def store_account(request):
 	user_form = UserEditForm(instance=request.user)
 	store_form = StoreForm(instance=request.user.store)
@@ -102,7 +92,7 @@ def store_account(request):
 
 
 
-@login_required(login_url='store/signin')
+@login_required(login_url='/store/signin/')
 def create_task(request):
 	task_form = TaskForm()
 	if request.method == "POST":
@@ -161,12 +151,12 @@ def delivery_boy_signup(request):
 
 
 
-@login_required(login_url='deliever/signin')
+@login_required(login_url='/deliever/signin')
 def delivery_boy_home(request):
 	return redirect(deliver_tasks)
 
 
-@login_required(login_url='deliver/signin')
+@login_required(login_url='/deliver/signin')
 def delivery_boy_account(request):
 	user_form = UserEditForm(instance=request.user)
 	delivery_boy_form = DeliveryBoyForm(

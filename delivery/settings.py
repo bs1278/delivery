@@ -168,4 +168,4 @@ CHANNEL_LAYERS = {
 }
 
 ASGI_APPLICATION = "delivery.routing.application"
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

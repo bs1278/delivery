@@ -25,7 +25,7 @@ from store import views, apis
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^celery/', views.celery_task_checker, name='celery_task_checker'),
+    # url(r'^celery/', views.celery_task_checker, name='celery_task_checker'),
 
     url(r'^api_auth_token/', views.get_auth_token),
 
