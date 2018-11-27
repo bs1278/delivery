@@ -52,3 +52,9 @@ http://localhost:8000/store/tasks/    (store manager dashboard)
 http://localhost:8000/deliver/tasks/ (deliverboy dashboard)
 note: diliver boy and store manager are deifferent type accounts
  ```
+
+<img width="1239" alt="Delivery" src="https://github.com/balaraju1278/delivery/blob/master/static/images/Screenshot%20from%202018-11-27%2017-24-17.png">
+<img width="1239" alt="Delivery" src="https://github.com/balaraju1278/delivery/blob/master/static/images/Screenshot%20from%202018-11-27%2017-24-59.png">
+<img width="1239" alt="Delivery" src="https://github.com/balaraju1278/delivery/blob/master/static/images/Screenshot%20from%202018-11-27%2017-25-19.png">
+<img width="1239" alt="Delivery" src="https://github.com/balaraju1278/delivery/blob/master/static/images/Screenshot%20from%202018-11-27%2017-26-27.png">
+<img width="1239" alt="Delivery" src="https://github.com/balaraju1278/delivery/blob/master/static/images/Screenshot%20from%202018-11-27%2017-26-48.png">
