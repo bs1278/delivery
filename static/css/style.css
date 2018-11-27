@@ -34,7 +34,8 @@ body {
   top: 0;
   left: 0;
   padding: 0;
-  background-color: #3F3F63;
+  background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(#b92b27,#1565C0); /* Standard syntax (must be last) */
   overflow: auto;
 }
 
@@ -43,7 +44,7 @@ body {
   padding: 30px 10px;
   font-weight: bold;
   font-size: 15px;
-  background-color: #383957;
+  
 }
 
 .sidebar > div:first-child > h4 {
@@ -57,7 +58,7 @@ body {
 /* SIDE BAR - LIST */
 .sidebar .list-group {
   padding: 0;
-  background-color: #3F3F63;
+ 
 }
 
 .sidebar .list-group > span {
@@ -71,7 +72,7 @@ body {
 
 .sidebar .list-group .list-group-item,
 .sidebar .list-group .list-group-item:focus {
-  background-color: #3F3F63;
+
   color: #b6b4c1;
   border: 0;
   padding-left: 60px;
