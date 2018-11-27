@@ -1,6 +1,3 @@
-# Food Delivery App called Foodtasker
-## Food Delivery App using Swift3/Xcode8 &amp; python/django
-
 #### Delivery is Simple Delivery management Application.
 #### Store manager can create task for delivery boys.
 #### Store manager can cancel task which not yet accpeted by delivery boy.
@@ -15,7 +12,7 @@
 
 
 
-### Setting up
+#### Setting up
 
 
 Fork the project to your personal account and get a local copy on your machine.
@@ -26,9 +23,9 @@ Change into the project folder.
 #### password :ASDFGhjkl1@
 
 
-# for deliver boy
-# username : deliverboy-1
-# password : ASDFGhjkl1@
+##### for deliver boy
+##### username : deliverboy-1
+##### password : ASDFGhjkl1@
 
 
 ```sh
