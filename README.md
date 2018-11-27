@@ -18,18 +18,12 @@
 Fork the project to your personal account and get a local copy on your machine.
 Change into the project folder.
 
-#### for storemanager 
-#### username : omega
-#### password :ASDFGhjkl1@
 
-
-##### for deliver boy
-##### username : deliverboy-1
-##### password : ASDFGhjkl1@
-
-
+Setup Virtual Environment for Delivery app
 ```sh
-$ python manage.py runserver
+$ pyvenv venv (creates new virtualenv for project)
+$ source venv/bin/activate (activate virtualenv assumeing using ubuntu)
+$ pip install -r requirements.txt  (install dependencies)
 ```
 
 Make sure to create migrations, create tables in db, and create a superuser to have an admin dashboard.
@@ -40,6 +34,14 @@ $ python manage.py migrate (creates the tables in your db based on the migration
 $ python manage.py createsuperuser (creates a superuser for your application in the db)
 $ python manage.py runserver (run server)
 ```
+##### for storemanager 
+##### username : omega
+##### password :ASDFGhjkl1@
+
+
+##### for deliver boy
+##### username : deliverboy-1
+##### password : ASDFGhjkl1@
 
 Now you should be able to view your app at http://127.0.0.1:8000 and to view your admin dashboard use 
 http://127.0.0.1:8000/admin/.
