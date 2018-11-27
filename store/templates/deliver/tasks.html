@@ -1,0 +1,56 @@
+{% extends 'store/base.html' %}
+
+{% block page %}
+
+    <div class="panel">
+        <div class="panel-heading bg-blue">
+            <h4 class="panel-title text-center text-white">Tasks</h4>
+        </div>
+        <div class="panel-body">
+            <br/>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr class="bg-gray text-white">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Preiority</th>
+                    <th>Delivery Boy</th>
+                    <th>Created At</th>
+                    <th>Accepted At</th>
+                    <th>Status</th>
+                    <th>Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.preiority }}</td>
+                            <td>{{ task.delivery_boy }}</td>
+                            <td>{{ task.created_at }}</td>
+                            <td>{{ task.accepted_at }}</td>
+                            {% if task.status %}
+                                {% if task.status == 'READY' %}
+                                    <td class="text-info">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                                {% if task.status == 'COMPLETED' %}
+                                    <td class="text-success">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                                {% if task.status == 'REJECTED' %}
+                                    <td class="text-danger">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                                {% if task.status == 'ACCEPTED' %}
+                                    <td class="text-success">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                           {% endif %}
+                           <td>Modify</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

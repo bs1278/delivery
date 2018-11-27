@@ -1,0 +1,49 @@
+o{% extends 'base.html' %}
+{% block title %} Deliver{% endblock %}
+{% block script %}
+	<script type="text/javascript">
+		// $(document).ready(function(){
+		// 	var now =  new Date();
+		// 	setInterval(function(){
+		// 		$.ajax({
+		// 			url: '/api/store/task/notification/' + now.toISOString() + '/',
+		// 			method: 'GET',
+		// 			success: function(data){
+		// 				if(data['notification'] === 0){
+		// 					$('.badge').text('');
+		// 				}else{
+		// 					$('.badge').text(data['notification']);
+		// 				}
+		// 			}
+
+		// 		})
+		// 		var node = document.getElementByClass('.badge'),
+		// 		var text  = node.textContent || node.innerText;
+		// 		alert("hi");	
+		// 	}, 1000)
+
+		// })
+	</script>
+{% endblock %}
+
+{% block sidebar %}
+	{% url 'delivery_boy_tasks' as delivery_boy_tasks_url %}
+	{% url 'delivery_boy_account' as delivery_boy_url %}
+	<div class="text-center">
+		<h4>Welcome, {{request.user.delivery_boy.first_name}}</h4>
+		<h4>{{reqest.user.get_full_name }}</h4>
+		<div class=".badge"></div>
+	</div>
+	<div class="list-group">
+		<span class="text-uppercase"></span>
+			<a href="{% url 'delivery_boy_tasks' %}" class="list-group-item {% if request.path == delivery_boy_tasks_url %} active {% endif %} ">Tasks<span class="badge"></span></a>
+
+			<span class="text-uppercase"></span>
+		      <a href="{% url 'delivery_boy_account' %}"
+		          class="list-group-item {% if request.path == delivery_boy_url %} active {% endif %} ">Account</a>
+	</div>
+	 <div class="text-center">
+      <a href="{% url 'delivery_boy-signout' %}?next='/store-signin/"
+          class="btn btn-pink">Logout</a>
+    </div>
+   {% endblock %}

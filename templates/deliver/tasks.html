@@ -1,0 +1,157 @@
+{% extends 'deliver/base.html' %}
+
+{% block page %}
+
+    <div class="panel">
+        <div class="panel-heading bg-primary">
+            <h4 class="panel-title text-center text-white">New Tasks</h4>
+        </div>
+        <div class="panel-body">
+            <br/>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr class="bg-gray text-white">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Store</th>
+                    <th>Preiority</th>
+                     <th>Action</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.store }}</td>
+                            <td>{{ task.preiority}}</td>
+                            <td><button class="btn btn-success" onclick="AcceptTask({{task.id}})">Accept</button></td>
+                            <!-- <td><button class="btn btn-danger" onclick="RejectTask({{task.id}})">Reject</button></td>
+                            <td><button class="btn btn-primary" onclick="CompletedTask({{task.id}})">Completed</button></td> -->
+                            <td>{{task.status}}</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading bg-blue">
+            <h4 class="panel-title text-center text-white">Accepted Tasks</h4>
+        </div>
+        <div class="panel-body">
+            <br/>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr class="bg-gray text-white">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Store</th>
+                    <th>Reject</th>
+                    <th>Completed</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for task in accepted_tasks %}
+                        <tr>
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.store }}</td>
+                            <td><button class="btn btn-danger" onclick="RejectTask({{task.id}})">Reject</button></td>
+                            <td><button class="btn btn-primary" onclick="CompletedTask({{task.id}})">Completed</button></td>
+                            <td>{{task.status}}</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading bg-blue">
+            <h4 class="panel-title text-center text-white">Completed Tasks</h4>
+        </div>
+        <div class="panel-body">
+            <br/>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr class="bg-gray text-white">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Store</th>
+                    <th>Completed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for task in completed_tasks %}
+                        <tr>
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.store }}</td>
+                            <td>{{task.status}}</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+<script type="text/javascript">
+    
+    function AcceptTask(id){
+        // alert(id)
+        $.ajax({
+            url: '/api/deliver/task/accept/',
+            data: {
+                'task_id': id
+            },
+            dataType: 'json',
+            success: function(result){
+                alert(result.result);
+            },
+            error: function(result){
+                alert('error');
+            }
+        });
+    }
+
+    function RejectTask(id){
+        $.ajax({
+            url: '/api/deliver/task/reject/',
+            data: {
+                'task_id': id
+            },
+            dataType: 'json',
+            success: function(result){
+                alert(result.status);
+            },
+            error: function(result){
+                alert(result.status);
+            }
+        });
+    }
+
+    function CompletedTask(id){
+        $.ajax({
+            url: '/api/deliver/task/complete/',
+            data: {
+                'task_id': id
+            },
+            dataType: 'json',
+            success: function(result){
+                alert(result.status);
+            },
+            error: function(result){
+                alert(result.status);
+            }
+        });
+    }
+
+
+</script>
+{% endblock %}

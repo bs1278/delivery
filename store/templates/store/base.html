@@ -1,0 +1,46 @@
+o{% extends 'base.html' %}
+{% block title %} Store {% endblock %}
+{% block script %}
+	<script type="text/javascript">
+		// $(document).ready(function(){
+		// 	var now =  new Date();
+		// 	setInterval(function(){
+		// 		$.ajax({
+		// 			url: '/api/deliver/task/accept/notification/' + now.toISOString() + '/',
+		// 			method: 'GET',
+		// 			success: function(data){
+		// 				if(data['notification'] === 0){
+		// 					$('.badge').text('');
+		// 				}else{
+		// 					$('.badge').text(data['notification']);
+		// 				}
+		// 			}
+
+		// 		})
+
+		// 	}, 1000)
+
+		// })
+	</script>
+{% endblock %}
+
+{% block sidebar %}
+	{% url 'store_tasks' as store_task_url %}
+	{% url 'store_account' as store_account_url %}
+	<div class="text-center">
+		<h4>Welcome, {{request.user.store.store_name}}</h4>
+		<h4>{{reqest.user.get_full_name }}</h4>
+	</div>
+	<div class="list-group">
+		<span class="text-uppercase"></span>
+			<a href="{% url 'store_tasks' %}" class="list-group-item {% if request.path == store_task_url %} active {% endif %} ">Tasks<span class="badge"></span></a>
+
+			<span class="text-uppercase"></span>
+		      <a href="{% url 'store-account' %}"
+		          class="list-group-item {% if request.path == store_account_url %} active {% endif %} ">Account</a>
+	</div>
+	 <div class="text-center">
+      <a href="{% url 'store-signout' %}?next='/store-signin"
+          class="btn btn-pink">Logout</a>
+    </div>
+   {% endblock %}

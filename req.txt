@@ -1,0 +1,9 @@
+Django
+gunicorn==19.6.0
+whitenoise==3.2.1
+dj-database-url==0.4.1
+djangorestframework
+django-rest-framework-social-oauth2==1.0.4
+django-bootstrap3==7.0.1
+celery==3.1.23
+

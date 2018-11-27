@@ -1,0 +1,118 @@
+{% extends 'store/base.html' %}
+
+{% block page %}
+
+    <div class="panel">
+        <div class="panel-heading bg-blue">
+            <h4 class="panel-title text-center text-white">Tasks</h4>
+        </div>
+        <div class="panel-body">
+            <br/>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr class="bg-gray text-white">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Preiority</th>
+                    <th>Delivery Boy</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr data-toggle="collapse">
+                           <td>{{ task.id }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.preiority }}</td>
+                            <td>{{ task.delivery_boy }}</td>
+                            {% if task.status %}
+                                {% if task.status == 'READY' %}
+                                    <td class="text-info">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                                {% if task.status == 'COMPLETED' %}
+                                    <td class="text-success">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                                {% if task.status == 'REJECTED' %}
+                                    <td class="text-danger">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                                {% if task.status == 'CANCELD' %}
+                                    <td class="text-warning">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                                {% if task.status == 'ACCEPTED' %}
+                                    <td class="text-success">{{ task.status }}</td>
+                                {% else %}{% endif %}
+                           {% endif %}
+                           <td><button onclick="cancelTask(`{{task.id}}`)"class="btn btn-danger" id="CancelTaskBtn" >Cancel</button>
+                           </td>
+                            <a href="{{ task.get_absolute_url }}"><td><button class="btn btn-success">Info</button></a>
+                           </td>
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        
+        </div>
+        <div class="container" id="task_data">
+            
+        </div>
+    </div>
+
+     <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{task.id}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<script type="text/javascript">
+    function cancelTask(id){
+         $.ajax({
+            url : '/api/store/cancel_task/',
+            data : {
+                'task_id': id
+            },
+            dataType: 'json',
+            success: function(result){
+                alert("Task was canceld");
+            },
+            error: function(result){
+                alert('error');
+            }
+         });
+    }
+
+    function TaskDetails(id){
+         $.ajax({
+            url : '/api/store/task_details/',
+            data : {
+                'task_id': id
+            },
+            dataType: 'json',
+            success: function(result){
+                alert(result);
+            },
+            error: function(result){
+                alert('error');
+            }
+         });
+    }
+
+</script>
+{% endblock %}
