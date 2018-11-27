@@ -43,5 +43,12 @@ $ python manage.py runserver (run server)
 ##### username : deliverboy-1
 ##### password : ASDFGhjkl1@
 
-Now you should be able to view your app at http://127.0.0.1:8000 and to view your admin dashboard use 
+Now you should be able to view your app to view your admin dashboard use 
 http://127.0.0.1:8000/admin/.
+
+```sh
+http://localhost:8000/store/signin/  (for signup)
+http://localhost:8000/store/tasks/    (store manager dashboard)
+http://localhost:8000/deliver/tasks/ (deliverboy dashboard)
+note: diliver boy and store manager are deifferent type accounts
+ ```
